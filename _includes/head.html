@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }} {{ site.description }} {% endif %}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+    <link rel="icon" type="image/png" href="{{ site.url }}/assets/img/site/favicon-paulo-dutra.png" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600"> 
     <link rel="stylesheet" href={{ "/assets/css/main.css | prepend: site.baseurl" }}>
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
