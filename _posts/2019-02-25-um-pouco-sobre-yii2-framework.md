@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Um pouco sobre Yii2 Framework"
+title:  "Um pouco sobre o Yii2 Framework"
 date:   2019-02-25 16:02:23 -0200
 categories: blog, tecnologia, php, yii2
 ---
