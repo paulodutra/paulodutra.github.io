@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Criando migrations no Yii2"
+title:  "Criando migrations no Yii2 "
 date:   2019-03-05 18:49:23 -0200
 categories: blog, tecnologia, php, yii2
 ---
