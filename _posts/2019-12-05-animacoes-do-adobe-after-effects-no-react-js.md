@@ -85,6 +85,8 @@ Ao clicar no link **"Error 500 Internal Server Error"** é apresentado o seguint
 
 **OBS:** As imagens não apresentam o movimento da animações.
 
+<a href="https://github.com/paulodutra/example-reactjs-bodymovin" target="__blank">Reposítório do Projeto</a>
+
 Bom essa foi uma pequena apresentação de como utilizar animações do Adobe After Effects no React JS. E ai o que achou ? comente abaixo.
 
 
