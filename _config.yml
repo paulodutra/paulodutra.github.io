@@ -30,9 +30,11 @@ disqus:
 # Build settings
 markdown: kramdown
 theme: minima
+#plugins_dir: ./_scripts
 plugins:
   - jekyll-feed
   - jekyll-gist
+#plugins: [jekyll-gist, jekyll-feed]
 
 #permalink: /:categories/:year/:month/:day/:title
 #permalink: /:year/:month/:day/:title
