@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Salvando arquivos na AWS S3 via API Laravel 6"
+title:  "Salvando arquivos na AWS S3 via API no Laravel 6"
 date:   2020-01-13 14:40:00 -0200
 categories: blog, tecnologia, php, laravel
 ---
