@@ -81,6 +81,82 @@ Para fechar o que foi proposto sobre configurações iniciais, iremos alterar a 
 
 ## Configuração de menu e páginas iniciais e de documentações
 
+Por padrão o docusaurus vem com 3 páginas **help.js, index.js e users.js**, que fica localizada em **website/pages/en**.
+Essas páginas são componentes implementados em <a href="https://reactjs.org/" target="__blank">reactjs</a> utilizando o padrão <a href="https://requirejs.org/docs/commonjs.html" target="__blank">CommonJS</a>. 
+
+No caso dos arquivos index.js e users.js utilizam a estratégia de <a href="https://pt-br.reactjs.org/docs/components-and-props.html" target="__blank">componentes de classe</a>, ja no caso do arquivo help.js é utilizada a estratégia de componente funcional. Outro ponto importante é que no caso do componente de classe que presenta a página index ele possui duas classes no mesmo arquivo são elas **HomeSplash e Index**. 
+
+Para exemplificar melhor iremos alterar os nomes dos 3 botões que aparecem na home.
+
+![botoes-pagina-home-docusaurus](/assets/img/posts/criando-sites-landingpages-e-documentacao-com-docusaurus/5-botoes-pagina-home-docusaurus.png)
+
+Vá até o arquivo **website/pages/en/index.js** e edite os botões presente no return da classe **HomeSplash**, neste caso irei realizar as seguintes alterações:
+
+- De: Try It Out Para: Sobre
+- De: Example Link Para: Como instalar ?
+- De: Example Link 2 Para: Como configurar ?
+
+Note que no caso os botões **Example Link** e **Example Link 2** os mesmos direcionam para páginas de documentações que apesar de serem escritas em markdom (.md) devem ser referenciadas como HTML (.html), pois ao final do bundle os mesmos serão gerados em html.
+Já no caso do botão **Try It Out** é uma ancora que utiliza um componente chamado **Block** (na classe Index presente no mesmo arquivo) com o **id="try"**.
+
+Também irei editar o texto e alterar o icone para isso que esta dentro da const TryOut seu conteúdo esta sendo utilizado pelo botão **Try** presente na classe Index. Para isso utilizei um SVG presente no site da documentação do docusaurus que pode ser visto nesta url, baixe o mesmo para a pasta **website/static/img** e alterei o nome do arquivo para **build_with_react.svg**
+
+{% gist 912ae0193c59c58d4cbfc480b7e9c4a2 %}
+
+**OBS:** Para facilitar a localização, copiei o componente com as alterações feitas e deixei disponível acima. 
+
+Após realizar as alterações e clicar no botão sobre, você terá o seguinte resultado:
+
+![texto-alterado-secao-try-docusaurus](/assets/img/posts/criando-sites-landingpages-e-documentacao-com-docusaurus/6-texto-alterado-secao-try-docusaurus.png)
+
+Antes de falar sobre a alteração do menu propriamente dita, temos duas configurações referentes a menu, a primeira esta relacionada ao menu superior e esta presente no seguinte arquivo **website/siteConfig.js** presente no array de objetos chamados **headerLinks**. Já a outra configuração esta relacionada ao menu das páginas de documentações presente no arquivo **website/sidebars.json**. 
+
+Vamos alterar o item de menu superior chamado **Docs** iremos alterar o nome para **Documentação** e também iremos alterar a opção chamada **help** para **Ajuda**, para isso vá até o arquivo **website/siteConfig.js** e altere o atributo label presente no array de objetos **headerLinks**.
+
+{% gist 96958d4215d8be2850be065072690be0 %}
+
+Após realizar as alterações você terá o seguinte resultado:
+
+![alterando-menu-superior-docusaurus](/assets/img/posts/criando-sites-landingpages-e-documentacao-com-docusaurus/7-alterando-menu-superior-docusaurus.png)
+
+Agora iremos alterar as opções de menu presente nos Docs para isso clique no botão Documentação, veja que neste parte em específico, temos uma sidebar no canto esquerdo, para alterar essas opções, vá no arquivo **website/sidebars.json**, veja que este arquivo contém uma serie de objetos e para cada atributo desse objeto, recebe um array com os ids das páginas de documentação, por sua vez essa página (arquivo em formato .md presente na **pasta docs**) possui um atributo chamado **sidebar_label** para alterar o nome apresentado na opção de menu, deverá ser alterado esse atributo.
+
+Para entendermos melhor a explicação acima, digamos que iremos alterar o nome do primeiro item de **"Example Page" para "Como instalar ?"**, para isso temos que ir no arquivo **website/sidebars.json** e localizar o id do documento que esta dentro da pasta **docs**. Ao consultar o arquivo **website/sidebars.json** vimos que o id do documento é o **doc1**, agora indo até o arquivo **docs/doc1.md** e altere o nome do atributo **sidebar_label**:
+
+{% gist 49336eb7f998ce507dcab9be44930a69 %}
+
+
+Realizando a alteração proposta acima, você terá o seguinte resultado:
+
+![opcao-de-menu-lateral-documentacao-alterado-docusaurus](/assets/img/posts/criando-sites-landingpages-e-documentacao-com-docusaurus/8-opcao-de-menu-lateral-documentacao-alterado-docusaurus.png)
+
+
+## Configuração de redes sociais no docussaurus
+
+No arquivo **website/siteConfig.js** é possível habilitar os comentários com o facebook, botão de seguir no twitter em outros apenas informando nome de usuário ou id referente a **APP de Facebook** e etc, conforme diretivas apresentadas abaixo, devem ser adicionadas:
+
+{% gist 35d14967163bc4439eab62f127c867a4 %}
+
+Neste caso apenas adicionei as configurações referente ao twitter, após fazer isso, veja que passou a ser apresentado na footer um botão referente ao twitter:
+
+![botao-twitter-config-social-docusaurus](/assets/img/posts/criando-sites-landingpages-e-documentacao-com-docusaurus/9-botao-twitter-config-social-docusaurus.png)
+
+## BLOG e DOCS
+
+Os arquivos referentes aos posts do blog ficam na pasta **website/blog**. Os mesmos são escritos utilizando a linguagem de marcação <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="__blank">markdown</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
