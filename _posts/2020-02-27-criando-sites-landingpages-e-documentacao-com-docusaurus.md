@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Criando sites, landing pages e documentações com docusaurus"
-date:   2020-02-27 17:00:00 -0200
+date:   2020-02-29 00:00:00 -0200
 categories: blog, tecnologia, javascript, reactjs, docusaurus
 ---
 
@@ -96,7 +96,7 @@ Vá até o arquivo **website/pages/en/index.js** e edite os botões presente no 
 - De: Example Link Para: Como instalar ?
 - De: Example Link 2 Para: Como configurar ?
 
-Note que no caso os botões **Example Link** e **Example Link 2** os mesmos direcionam para páginas de documentações que apesar de serem escritas em markdom (.md) devem ser referenciadas como HTML (.html), pois ao final do bundle os mesmos serão gerados em html.
+Note que no caso os botões **Example Link** e **Example Link 2** os mesmos direcionam para páginas de documentações que apesar de serem escritas em markdown (.md) devem ser referenciadas como HTML (.html), pois ao final do bundle os mesmos serão gerados em html.
 Já no caso do botão **Try It Out** é uma ancora que utiliza um componente chamado **Block** (na classe Index presente no mesmo arquivo) com o **id="try"**.
 
 Também irei editar o texto e alterar o icone para isso que esta dentro da const TryOut seu conteúdo esta sendo utilizado pelo botão **Try** presente na classe Index. Para isso utilizei um SVG presente no site da documentação do docusaurus que pode ser visto nesta url, baixe o mesmo para a pasta **website/static/img** e alterei o nome do arquivo para **build_with_react.svg**
@@ -141,10 +141,42 @@ Neste caso apenas adicionei as configurações referente ao twitter, após fazer
 
 ![botao-twitter-config-social-docusaurus](/assets/img/posts/criando-sites-landingpages-e-documentacao-com-docusaurus/9-botao-twitter-config-social-docusaurus.png)
 
-## BLOG e DOCS
+## Blog e Documentação
 
-Os arquivos referentes aos posts do blog ficam na pasta **website/blog**. Os mesmos são escritos utilizando a linguagem de marcação <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="__blank">markdown</a>
+Os arquivos referentes aos posts do blog ficam na pasta **website/blog**. Os mesmos são escritos utilizando a linguagem de marcação <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="__blank">markdown</a>. Os nomes dos arquivos são organizados por **data e nome** exemplo: 2020-02-29-iniciando-com-docusaurus.md.
 
+Para apresentar o botão de leia mais no post, basta utilizar o comentário 
+```
+<!--truncate--> 
+```
+logo abaixo do texto que será apresentado.
+
+Outra funcionalidade interessante é que no post que é escrito em markdown, é possível referenciar o autor de 3 formas:
+
+- Nome por meio do atributo: **author**
+- Url externa como site ou Twitter por exemplo por meio do atributo: **authorURL**
+- ID do Facebook por meio do atributo: **100002918863369**
+
+Ao preencher essas informações a mesma foto que é apresentada no perfil do facebook, será apresentado no blog. 
+Iremos criar uma postagem no blog, para isso vamos criar um arquivo na pasta **website/blog** com o seguinte nome e extensão: **2020-02-29-iniciando-com-docusaurus.md** e como conteúdo do post irei colocar a seguinte marcação:
+
+{% gist 0f782087fde8b6be88ddff99d7bd1d1b %}
+
+Após isso, acesse a opção **blog presente no menu superior** e em seguida veja o resultado:
+
+![post-docusaurus](/assets/img/posts/criando-sites-landingpages-e-documentacao-com-docusaurus/10-escrevendo-post-docusaurus.png)
+
+Agora para fechar iremos escrever uma página de DOC (documentação), o processo é parecido com a escrita de um post, entretanto as páginas de documentação ficam no diretório **docs** e as páginas de documentação possuem um **id** que é utilizado para referenciar a mesma no arquivo de menu **website/sidebars.json**.
+
+Outra caracteristica importante além do id, uma página de documentação, também possui um atributo chamado **sidebar_label** que é responsável por receber o nome da página conforme será apresentado no menu lateral.
+
+Iremos criar uma página de documentação, para isso vamos criar um arquivo na pasta **docs** chamado **minhadocumentacao.md**, com o seguinte conteúdo:
+
+{% gist 47eeee3febd9fcca4aee9e6ca1be93f3 %}
+
+Com isso neste post foi apresentado, algumas possibilidades do que é possível fazer utilizando o docusaurus. Na data na qual estou escrevendo este post a versão estável do docusaurus é a **1.14.4**, entretanto a **versão 2 esta sendo desenvolvida** e se encontra na versão **alpha 43**, para consultar a respeito da 2 vesão acesse este <a href="https://v2.docusaurus.io/" target="__blank">link</a>
+
+<a href="https://github.com/paulodutra/post-criando-site-lp-doc-docusaurus" target="__blank">Reposítório do Projeto</a>
 
 
 
