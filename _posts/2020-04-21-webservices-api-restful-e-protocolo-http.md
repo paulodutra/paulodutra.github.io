@@ -45,15 +45,15 @@ Outra prática comum em aplicações do tipo restful é trabalhar com versões, 
 
 Cada verbo HTTP possui um significado, (entretanto você pode utilizar o verbo para o significado que você desejar), veja abaixo a convenção para os verbo HTTP: GET, POST, PUT, DELETE, PATCH, OPTIONS:
 
-- **GET:** Consultar informações é considerado "Seguro" no ponto de vista de não fazer nenhuma alteração nos dados da API em si, exemplo: GET/clientes;
+-**GET:** Consultar informações é considerado "Seguro" no ponto de vista de não fazer nenhuma alteração nos dados da API em si, exemplo: GET/clientes;
 
-- **POST:** Cria um novo recurso é considerado "Não Seguro" no ponto de vista de fazer alteração nos dados API em si (Porque iremos alterar o estado da nossa API), exemplo: POST/pedidos;
+-**POST:** Cria um novo recurso é considerado "Não Seguro" no ponto de vista de fazer alteração nos dados API em si (Porque iremos alterar o estado da nossa API), exemplo: POST/pedidos;
 
-- **PUT:** Atualiza um recurso existente é considerado "Não Seguro" no ponto de vista de fazer alteração nos dados API em si (Porque iremos alterar o estado da nossa API), exemplo: PUT/pedidos/2320;
+-**PUT:** Atualiza um recurso existente é considerado "Não Seguro" no ponto de vista de fazer alteração nos dados API em si (Porque iremos alterar o estado da nossa API), exemplo: PUT/pedidos/2320;
 
-- **DELETE:** Exclui um recurso existente é considerado "Não Seguro" no ponto de vista de fazer alteração nos dados API em si (Porque iremos alterar o estado da nossa API), exemplo: DELETE/pedidos/4060;
+-**DELETE:** Exclui um recurso existente é considerado "Não Seguro" no ponto de vista de fazer alteração nos dados API em si (Porque iremos alterar o estado da nossa API), exemplo: DELETE/pedidos/4060;
 
-- **OPTIONS:** Consulta informações na API,é considerado "Seguro" no ponto de vista de não fazer nenhuma alteração nos dados da API em si (Porque iremos alterar o estado da nossa API), exemplo: OPTIONS/clientes.
+-**OPTIONS:** Consulta informações na API,é considerado "Seguro" no ponto de vista de não fazer nenhuma alteração nos dados da API em si (Porque iremos alterar o estado da nossa API), exemplo: OPTIONS/clientes.
 
 
 O **OPTIONS é uma forma do  cliente identificar quais recursos estão disponíveis**, ou seja caso a API implemente o cliente pode passar OPTIONS/clientes e receber quais recursos estão disponíveis. Também serve para consultar quais HEADERS podemos passar em nossa requisição. Muito implementado em libs javascript onde antes dela enviar as requisições de fato ela manda um option e recebe quais recursos estão disponíveis, e caso não tenha a requisição desejada aborta a mesma.
