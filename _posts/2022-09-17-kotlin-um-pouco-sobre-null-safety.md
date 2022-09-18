@@ -7,7 +7,7 @@ categories: blog, tecnologia, kotlin
 
 Fala galera, recentemente estava estudando alguns conceitos básicos sobre o kotlin.
 
-Um dos recursos que achei interessante, foi o **null safety** que consiste em uma forma de declarar uma variável do tipo string para previnir alguns erros durante a sua manipulação da.
+Um dos recursos que achei interessante, foi o **null safety** que consiste em uma forma de declarar uma variável do tipo string para previnir alguns erros durante a sua manipulação.
 
 De forma geral para declarar váriavel no kotlin, podemos utilizar a palavra reservada **val** ou **var**, sendo que val se assimila ao **const** no Javascript e **var** se assimila ao **let**. 
 Ou seja val para valores constantes e var para valores que podem mudar ao longo do ciclo de execução. 
