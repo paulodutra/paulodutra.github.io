@@ -32,6 +32,7 @@ export const Button = (props: ButtonProps) => {
 ```
 
 {% gist c25ff2f841ff8f69584fbc0596d32e2e#file-button-tsx %}
+
 Para evitar a definição do children como uma propriedade, você pode utilizar na definição do type o **PropsWithChildren** que automaticamente encapsula a propriedade children.  Entretanto as propriedades nativas da tag html ainda necessitam de definição no type. 
 
 ```
