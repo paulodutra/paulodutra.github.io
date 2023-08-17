@@ -6,7 +6,10 @@ categories: blog, tecnologia, javascript, react
 ---
 
 Fala pessoal, irei apresentar 3 formas de definir tipos para propriedades html, irei apresentar como caso de uso a propriedade button, entretanto as formas podem ser utilizadas com outras propriedades html. 
-A primeira forma é definir um type para o componente onde todas as propriedades são especificadas, inclusive as propriedades nativas da tag html. Esta forma pode ser mais trabalhosa, tendo em vista que todas as propriedades nativas na tag devem ser informadas na definição do type e caso você queira obter os elementos filhos do componente também deverá definir uma propriedade children do tipo ReactNode.
+
+A primeira forma é definir um type para o componente onde todas as propriedades são especificadas, inclusive as propriedades nativas da tag html.
+
+Esta forma pode ser mais trabalhosa, tendo em vista que todas as propriedades nativas na tag devem ser informadas na definição do type e caso você queira obter os elementos filhos do componente também deverá definir uma propriedade children do tipo ReactNode.
 
 ```javascript
 import React, { ReactNode } from 'react'
