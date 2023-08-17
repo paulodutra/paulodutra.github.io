@@ -11,7 +11,7 @@ A primeira forma é definir um type para o componente onde todas as propriedades
 
 Esta forma pode ser mais trabalhosa, tendo em vista que todas as propriedades nativas na tag devem ser informadas na definição do type e caso você queira obter os elementos filhos do componente também deverá definir uma propriedade children do tipo **ReactNode**.
 
-```javascript
+```
 import React, { ReactNode } from 'react'
 
 type ButtonProps = {
@@ -29,7 +29,7 @@ export const Button = (props: ButtonProps) => {
 ```
 Para evitar a definição do children como uma propriedade, você pode utilizar na definição do type o **PropsWithChildren** que automaticamente encapsula a propriedade children.  Entretanto as propriedades nativas da tag html ainda necessitam de definição no type. 
 
-```javascript
+```
 import React from 'react'
 
 type ButtonProps = React.PropsWithChildren<{
@@ -47,7 +47,7 @@ export const Button = ({children, lenghtButton, onClick}: ButtonProps) => {
 ```
 Para resolver tanto a questão do children quanto a questão de não precisar definir as propriedades nativas da tag, você pode utilizar o **ComponentProps<’informe-aqui-a-tag-html’>** e adicionar as propriedades extras que irá precisar no seu componente, conforme o exemplo abaixo:
 
-```javascript
+```
 import React from 'react'
 
 type ButtonProps = React.ComponentProps<"button"> & {
