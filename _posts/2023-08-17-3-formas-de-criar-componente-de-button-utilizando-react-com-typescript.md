@@ -21,7 +21,10 @@ type ButtonProps = {
 };
 export const Button = (props: ButtonProps) => {
   return (
-    <button onClick={props.onClick} style={{fontSize: props.lenghtButton}}>
+    <button
+        onClick={props.onClick}
+        style={{fontSize: props.lenghtButton}}
+    >
         {props.children}
     </button>
   )
@@ -39,7 +42,10 @@ type ButtonProps = React.PropsWithChildren<{
 
 export const Button = ({children, lenghtButton, onClick}: ButtonProps) => {
   return (
-    <button onClick={onClick} style={{fontSize: lenghtButton}}>
+    <button
+        onClick={onClick}
+        style={{fontSize: lenghtButton}}
+    >
         {children}
     </button>
   )
