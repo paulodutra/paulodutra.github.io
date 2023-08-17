@@ -45,6 +45,7 @@ export const Button = ({children, lenghtButton, onClick}: ButtonProps) => {
   )
 }
 ```
+
 Para resolver tanto a questão do children quanto a questão de não precisar definir as propriedades nativas da tag, você pode utilizar o **ComponentProps<’informe-aqui-a-tag-html’>** e adicionar as propriedades extras que irá precisar no seu componente, conforme o exemplo abaixo:
 
 ```
