@@ -11,66 +11,14 @@ A primeira forma é definir um type para o componente onde todas as propriedades
 
 Esta forma pode ser mais trabalhosa, tendo em vista que todas as propriedades nativas na tag devem ser informadas na definição do type e caso você queira obter os elementos filhos do componente também deverá definir uma propriedade children do tipo **ReactNode**.
 
-```
-import React, { ReactNode } from 'react'
-
-type ButtonProps = {
-    lenghtButton?: string;
-    children: ReactNode;
-    onClick?: () => void
-};
-export const Button = (props: ButtonProps) => {
-  return (
-    <button
-        onClick={props.onClick}
-        style={{fontSize: props.lenghtButton}}
-    >
-        {props.children}
-    </button>
-  )
-}
-```
-
-{% gist c25ff2f841ff8f69584fbc0596d32e2e#file-button-tsx %}
+{% gist 7c2eff090dc2c4e5ba8d2f5639c8b44f %}
 
 Para evitar a definição do children como uma propriedade, você pode utilizar na definição do type o **PropsWithChildren** que automaticamente encapsula a propriedade children.  Entretanto as propriedades nativas da tag html ainda necessitam de definição no type. 
 
-```
-import React from 'react'
 
-type ButtonProps = React.PropsWithChildren<{
-    lenghtButton?: string;
-    onClick?: () => void
-}>
-
-export const Button = ({children, lenghtButton, onClick}: ButtonProps) => {
-  return (
-    <button
-        onClick={onClick}
-        style={{fontSize: lenghtButton}}
-    >
-        {children}
-    </button>
-  )
-}
-```
+{% gist 0e082388d9b2cac067b8eb19c42ac96b %}
 
 Para resolver tanto a questão do children quanto a questão de não precisar definir as propriedades nativas da tag, você pode utilizar o **ComponentProps<’informe-aqui-a-tag-html’>** e adicionar as propriedades extras que irá precisar no seu componente, conforme o exemplo abaixo:
 
-```
-import React from 'react'
+{% gist 124a65b23d13ec7f7ee60ed4225acded %}
 
-type ButtonProps = React.ComponentProps<"button"> & {
-    lenghtButton?: string
-}
-export const Button = ({children, lenghtButton, ...props}: ButtonProps) => {
-  return (
-    <button 
-        style={{fontSize: lenghtButton}}
-        {...props}
-    >
-        {children}
-    </button>
-  )
-}
-```
