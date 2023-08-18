@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "3 formas de criar componente de button utilizando React com typescript"
-date:   2023-08-13 13:18:00 -0200
+date:   2023-08-17 13:18:00 -0200
 categories: blog, tecnologia, javascript, react
 ---
 
