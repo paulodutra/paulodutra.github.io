@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "3 formas de criar componente de button utilizando React com typescript"
+title:  "2 formas de lidar com eventos do tipo onChange com input do tipo checkbox no React + typescript"
 date:   2023-08-18 17:25:00 -0200
 categories: blog, tecnologia, javascript, react
 ---
