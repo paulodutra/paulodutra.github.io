@@ -10,7 +10,7 @@ Fala pessoal, neste post irei mostrar duas formas de lidar com eventos do tipo o
 
 Basicamente iremos definir um componente para o input do tipo checkbox, onde iremos atribuir ao mesmo um useState do tipo boolean onde o value representa o valor para “checked”  e o setValue irá ser a função de atribuir valor no momento que o evento onChange estiver sendo chamado. 
 
-Após isso iremos criar uma função que será do tipo **React.ChangeEventHandler<HTMLInputElement>** que irá receber o evento e pegar o **currentTarget.checked**. 
+Após isso iremos criar uma função que será do tipo React.ChangeEventHandler<HTMLInputElement> que irá receber o evento e pegar o currentTarget.checked. 
 
 
 {% gist bfe3339881afcec2e5cb51f5f3f6c78c %}
