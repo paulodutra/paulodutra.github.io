@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "3 formas de criar componente de button utilizando React com typescript"
+date:   2023-08-18 17:25:00 -0200
+categories: blog, tecnologia, javascript, react
+---
+
+
 Fala pessoal, neste post irei mostrar duas formas de lidar com eventos do tipo onChange, para o exemplo irei utilizar o input do tipo checkbox, mas também se aplica para os outros tipos de input, desde que tenha o evento **onChange** atrelado.
 
 Basicamente iremos definir um componente para o input do tipo checkbox, onde iremos atribuir ao mesmo um useState do tipo boolean onde o value representa o valor para “checked”  e o setValue irá ser a função de atribuir valor no momento que o evento onChange estiver sendo chamado. 
