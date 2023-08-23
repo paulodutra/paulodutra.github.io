@@ -13,7 +13,7 @@ App.tsx:
 
 {% gist cad387074bd6f51b9998c59fd37db919 %}
 
-Note que ao informar a propriedade chamada increment é passada informada uma função como parâmetro a mesma deve anotada com o tipo **React.Dispatch<React.SetStateAction<tipo-do-dado>>** neste caso number no outro componente. 
+Note que ao informar a propriedade chamada increment é passada informada uma função como parâmetro a mesma deve anotada com o tipo React.Dispatch<React.SetStateAction<tipo-do-dado>> neste caso number no outro componente. 
 
 Button.tsx:
 
