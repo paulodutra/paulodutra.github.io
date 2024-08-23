@@ -66,7 +66,7 @@ npm i -D @faker-js/faker
 
 Next, we will use path aliases to make imports cleaner. Open the **tsconfig.json** file and add:
 
-```
+```js
 {
   "compilerOptions": {
     "module": "commonjs",
