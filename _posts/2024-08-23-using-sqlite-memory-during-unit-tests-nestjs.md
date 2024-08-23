@@ -66,7 +66,7 @@ npm i -D @faker-js/faker
 
 Next, we will use path aliases to make imports cleaner. Open the **tsconfig.json** file and add:
 
-```js
+```json
 {
   "compilerOptions": {
     "module": "commonjs",
@@ -97,7 +97,7 @@ Next, we will use path aliases to make imports cleaner. Open the **tsconfig.json
 
 For this configuration to work, it will be necessary to configure **moduleNameMapper** in Jest. Open the package.json, cut the **Jest configurations**, and create a **jest.config.ts** file at the same level as **package.json** to configure unit tests. The Jest scope should look like this:
 
-```
+```typescript
 module.exports = {
   preset: 'ts-jest', 
   moduleFileExtensions: ['js', 'json', 'ts', 'node'],
@@ -118,7 +118,7 @@ module.exports = {
 ```
 Add the configurations on **test/jest-e2e.json**: 
 
-```
+```json
 {
   "moduleFileExtensions": ["js", "json", "ts"],
   "rootDir": "../",
@@ -154,7 +154,7 @@ Add the configurations on **test/jest-e2e.json**:
 
 Create the **docker-compose.yaml** file and the **data** folder for Docker to store the container's data at the same level as **package.json**:
 
-```
+```dockerfile
 version: '3.8'
 services:
   mysql:
@@ -191,7 +191,7 @@ nest g service modules/task
 **Warning**: Instead of creating the "task" folder inside the "modules" folder, you can create a separate module named "task" to better organize and separate the modules. The difference will be that 'task' will have its own file named **task.module.ts**.
 After that, you need to create the configuration path **src/main/config/database** and add the configuration files. First, create the **in-memory-database.config.ts** file:
 
-```
+```typescript
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
@@ -216,7 +216,7 @@ export const inMemoryDatabaseConfig = registerAs(
 
 Now, create the **mysql-database.config.ts** file at the same path as **in-memory-database.config.ts**:
 
-```
+```typescript
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
@@ -245,7 +245,7 @@ export const mysqlDatabaseConfig = registerAs(
 
 So, we can transform the database module into a dynamic module. The logic is simple: if **NODE_ENV** is equal to "**test**", the database module will import and export the InMemoryDatabase module. Otherwise, it will import and export the MysqlDatabase module. Here is the code for **src/infrastructure/database.module.ts**:
 
-```
+```typescript
 import { DynamicModule, Module } from '@nestjs/common';
 import { MysqlModule } from './mysql/mysql.module';
 import { InMemoryModule } from './in-memory/in-memory.module';
@@ -269,7 +269,7 @@ export class DatabaseModule {
 
 Before continuing with the database tools such as migrations, seeds, and others, create the entity to map its properties. The file should be **src/infrastructure/entities/task.entity.ts**:
 
-```
+```typescript
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -293,7 +293,7 @@ npx typeorm migration:create src/infrastructure/database/migrations/create-task-
 
 After creating the migration file, you need to define the types and columns in the up method of the migration class and drop (or destroy) the table in the down method. **src/infrastructure/database/migrations/create-task-table.migration.ts**:
 
-```
+```typescript
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreateTaskTable1722825209848 implements MigrationInterface {
@@ -328,7 +328,7 @@ export class CreateTaskTable1722825209848 implements MigrationInterface {
 
 Now, create the seed to populate the table with fake data using the **faker-js** library. To do this, create a **seeds** folder inside **src/infrastructure/database**, and within that folder, create the **task-seed-service.ts** file. The file path is **src/infrastructure/database/seeds/task-seed-service.ts**:
 
-```
+```typescript
 import { Injectable } from '@nestjs/common';
 import { EntityManager } from 'typeorm';
 import { faker } from '@faker-js/faker';
@@ -355,7 +355,7 @@ export class TaskSeedService {
 
 After that, it's time to implement the repository. Create a repositories folder inside **src/infrastructure/database**, and within that folder, create the **task.repository.ts** file. The file path is **src/infrastructure/database/repositories/task.repository.ts**:
 
-```
+```typescript
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -381,7 +381,7 @@ export class TaskRepository {
 Now we need to import the repository, seed, and **TypeOrmModule** into both the **InMemoryDatabase** module and the **MysqlDatabase** module.
 For the **InMemoryDatabase** module, see the configuration here. **src/infrastructure/database/in-memory/in-memory.module.ts**:
 
-```
+```typescript
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -411,7 +411,7 @@ export class InMemoryModule {}
 
 For the **MysqlDatabase** module, see the configuration here:
 
-```
+```typescript
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -441,7 +441,7 @@ export class MysqlModule {}
 
 Now, we are going to configure the first test file, even though it doesn't have any endpoints. Our configuration will create the database using SQLite in memory, run the migration and seed, and destroy them after the tests are finished. The file path is **src/modules/task/task.service.spec.ts**:
 
-```
+```typescript
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
@@ -508,7 +508,7 @@ The following files contain the implementation.
 
 **src/modules/task/task.controller.ts**:
 
-```
+```typescript
 import { Controller, Get, Query, Req, Res, HttpStatus } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { TaskService } from '@/modules/task/task.service';
@@ -538,7 +538,7 @@ export class TaskController {
 
 **src/modules/task/task.service.ts**:
 
-```
+```typescript
 import { Injectable } from '@nestjs/common';
 import { TaskRepository } from '@/infrastructure/database/repositories/task.repository';
 
@@ -558,7 +558,7 @@ export class TaskService {
 
 **src/modules/modules.module.ts: **:
 
-```
+```typescript
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '@/infrastructure/database/database.module';
 import { TaskController } from '@/modules/task/task.controller';
@@ -574,7 +574,7 @@ export class ModulesModule {}
 
 Now, it’s time to configure the controller's test file. Here is the configuration. **src/modules/task/task.controller.spec.ts**:
 
-```
+```typescript
 import { Test, TestingModule } from '@nestjs/testing';
 import { TaskController } from './task.controller';
 import { TaskService } from './task.service';
@@ -603,7 +603,7 @@ describe('TaskController', () => {
 Before continuing to add more test cases, let's configure our end-to-end tests. Create a folder following the same structure as the application inside the src/test folder. The resulting structure will be: **src/test/module/task**. Inside this folder, create the **task.e2e-spec.ts** file.
 We will now create two end-to-end test cases: one that filters tasks that are done and another that filters tasks that are not done. **src/test/module/task/task.e2e-spec.ts**:
 
-```
+```typescript
 import { Test, TestingModule } from '@nestjs/testing';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
@@ -667,7 +667,7 @@ describe('TaskController (e2e)', () => {
 
 Now we will complete the service test cases. **src/modules/task/task.service.spec.ts**:
 
-```
+```typescript
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
@@ -738,7 +738,3 @@ Furthermore, it provides a straightforward way to test across environments witho
 The advantage of this approach is that with minimal configuration, we can automate migrations and populate data. This allows us to focus on writing and executing tests rather than creating test doubles to replace the data layer. Sometimes, mocks can bypass parts of the code and increase testing complexity. If you have a coverage goal, in my opinion, this approach or using test containers can lead to more effective tests. Here is the <a href="https://github.com/paulodutra/nestjs-with-sqlite-testing" target="__blank">GitHub link</a>
 
 Whenever we need to modify the application, we should ensure that the changes do not introduce problems or side effects. We can use tests with well-defined scenarios to make things safer. To simulate these scenarios, having access to the appropriate data can be very useful.
-
-
-
-
